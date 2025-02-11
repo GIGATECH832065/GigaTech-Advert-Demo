@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIGATECH WEB DESIGN SERVICES</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Prevent scrollbars */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure full viewport height */
+        }
+
+        #background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the entire background */
+            z-index: -1; /* Place video behind content */
+        }
+
+        #content {
+            flex-grow: 1; /* Allow content to take up available space */
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            overflow: hidden; /* Hide overflowing text */
+        }
+
+        #scrolling-text {
+            font-family: 'Orbitron', sans-serif; /* Updated to Orbitron */
+            font-size: 4em; /* Adjust size as needed */
+            font-weight: bold;
+            color: lime; /* Neon green */
+            white-space: nowrap; /* Prevent text from wrapping */
+            animation: scroll 10s linear infinite; /* Adjust duration for speed */
+            padding-left: 100%; /* Start off-screen */
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        #time-box {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-family: 'Orbitron', sans-serif; /* Updated to Orbitron */
+            font-size: 24px;
+            z-index: 1; /* Ensure it appears above the video */
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            padding: 25px;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif; /* Updated to Orbitron */
+            font-size: 12px;
+            color: white;
+        }
+
+        .email-button {
+            display: block; /* Make the button block-level */
+            margin-top: 10px; /* Add space above the button */
+            background-color: #6c3483 ; /* Purple */
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .email-button:hover {
+            background-color: #008000; /* Darker green on hover */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="time-box"></div>
+
+    <video id="background-video" autoplay muted loop>
+        <source src="rain.mp4" type="video/mp4">  Your browser does not support the video tag.
+    </video>
+
+    <div id="content">
+        <div id="scrolling-text">GIGATECH WEB DESIGN SERVICES</div>
+    </div>
+
+    <footer>
+        &copy; 2025 GIGATECH. All rights reserved<br>
+        <a href="mailto:giga832065@gmail.com" class="email-button">EMAIL ME</a>
+    </footer>
+
+    <script>
+        function updateTime() {
+            const timeElement = document.getElementById('time-box');
+            const now = new Date();
+
+            // Time formatting
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+
+            // Date formatting
+            const day = now.getDate();
+            const month = now.getMonth() + 1; // Months are zero-based
+            const year = now.getFullYear();
+
+            const formattedTime = `${hours}:${minutes}:${seconds}`;
+            const formattedDate = `${month}/${day}/${year}`;
+
+            timeElement.textContent = `${formattedDate} | ${formattedTime}`;
+        }
+
+        setInterval(updateTime, 1000); // Update the time every second
+        updateTime(); // Initialize time immediately
+    </script>
+
+</body>
+</html>
